@@ -1,0 +1,99 @@
+Fortinet 6.2
+
+Conexion SSH o CLI
+
+user= admin
+pass= 
+
+Fortigate# get system interface  // Ver las interfaces
+Fortigate# config system interface // configurar las interfaces
+
+Fortigate(interface)# show //ver estado 
+Fortigate(interface)# get // ver estado 
+
+Fortigate(interface)#edit port3 //entrar a la configuracion del puerto
+fortigate(port3)# get // ver opciones
+Fortigate(port3)# set ip 10.0.2.254/24  //configurar IP address de la interfaz 
+Fortigate(port3)# set allowaccess ping http https // Los permisos en esa interfaz
+Fortigate(port3)# end // Para guardar la configuracion
+
+Fortigate# ? // ver comandos disponibles 
+
+Fortigate(port3)# unset allowaccess //regresar a valores por defecto 
+
+Fortigate# execute ping 8.8.8.8 //uso de ping 
+
+Fortigate# get system interface | grep port1
+
+Fortigate# config system global
+Fortigate(global)# get // ver todas las configuraciones 
+Fortigate(global)# get | grep http //Buscar solo la configuracion para http
+
+admin-http-connection-recive-timeout:2  //resultado
+
+Fortigate(global)# set admin-http-connection-recive-timeout 60 // cambiar el timeout de conexion web a 60
+
+fortigate(global)# end
+
+fortigate# get system status // Estado general de la configuracion , por ejemplo la licencia. 
+
+Fortigate# config system global 
+fortigate()global# get  // enlista todas las configuraciones del sistema. 
+
+fortigate# ? // comandos disponibles 
+fortigate# show // configuraciones realizadas
+fortigate# execute // ejecutar comandos
+
+fortigate#grep // comando de linux para realizar busqueda 
+fortigate# grep -f // busca todo el parametro completo de una busqueda
+
+fortigate# show | grep -f port1  
+
+fortigate# grep -fi // i es insensitivo a mayuscula y minuscula. 
+
+fortigate# config system interface 
+fortigate(interface)# get port1 // Muestra las configuraciones de port1
+fortigate(interface)# show  // muestra configuraciones aplicadas
+
+fortigate(interface)# show full-configuration //equivalente a get
+
+fortigate(interface)# end // cierra y guarda toda la configuracion aplicada. 
+
+fortigate(interface)# purge port5 //limpiar todas las configuraciones
+
+fortigate(interface)# delete // elemina objeto de red
+
+fortigate(interface)# edit // agrega o edita configuraciones 
+
+fortigate(interface)# edit port1
+fortigate(port1)# show 
+fortigate(port1)#get 
+fortigate(port1)# ? 
+
+fortigate(port1)#set allowaccess // agrega la opcion de configuracion para el acceso web 
+fortigate(port1)#unset allowaccess //Quita opciones de configuracion para el acceso web
+fortigate(port1)#append allowaccess //agrega una opcion adicional a la configuraciones para el acceso web
+fortigate(port1)#select //seleciona varios valores
+fortigate(port1)#unselect deseleciona varios valores
+fortigate(port1)# clear //Limpiar multiples operaciones.
+fortigate(port1)# abort // deshacer todos los cambios.
+fortigate(port1)# next // traslada la siguiente tabla. 
+fortigate(port1)# next //    --> regresa a la tabla anterior , nota: la // es parte del comando. 
+fortigate(interface)#   // seria el resultado. 
+
+fortigate# config system dhcp server
+fortigate(server)# edit
+fortigate(server)# delete 
+fortigate(server)# purge 
+fortigate(server)# rename
+fortigate(server)# get 
+fortigate(server)# show 
+fortigate(server)# end 
+
+fortigate# config firewall address // enlista los objetos de red.
+fortigate# config firewall addrgrp // enlista los grupos de objeto de red. 
+fortigate(addrgrp)# edit <nombre del grupo> //editar un grupo en efectivo. 
+fortigate(name_group)# set member <nombre_del_objeto> // configura un objeto.
+fortigate(name_group)# append member <nombre del objeto> //agrega un nuevo objeto de red a la lista. 
+fortigate(name_group)# clear member // Limpia todas las configuraciones de miembros agregados. 
+
