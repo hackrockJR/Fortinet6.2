@@ -1,0 +1,2 @@
+fortinet# get router info routing-table all //Muestra la tabla de rutas.
+
